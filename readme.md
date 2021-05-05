@@ -21,3 +21,22 @@ TODO badges
 ### VPC & Subnets
 This application will require both a front end and a backend. To facilitate this, we will create a VPC with 3 subnets: Public, private and data. EC2 / Machine hosting this will be deployed in the private layer, the database will be in the data layer. End users should not have direct access to either of these, they will instead have access to the site via a load balancer stored on the public layer.
 
+#### Security
+
+- Network segmentation (if applicable to the implementation)
+VPC has been split into 3 subnets: private, data and public.
+
+- Secret storage
+- Platform security features
+
+#### Simplicity
+
+- No superfluous dependencies
+- Do not overengineer the solution
+
+#### Resiliency
+
+- Auto scaling and highly available frontend
+- Highly available Database
+
+
