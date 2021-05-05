@@ -116,6 +116,10 @@ resource "aws_subnet" "data3" {
   }
 }
 
+output "vpc_id" {
+  value = aws_vpc.main.id
+}
+
 output "public_subnet_1_id" {
   value = aws_subnet.public1.id
 }
@@ -126,4 +130,8 @@ output "public_subnet_2_id" {
 
 output "public_subnet_3_id" {
   value = aws_subnet.public3.id
+}
+
+output "private_subnet_1_id" {
+  value = aws_subnet.private1.id
 }

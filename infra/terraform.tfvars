@@ -1,1 +1,2 @@
-ami_id = "ami-077e31c4939f6a2f3"
+ami_id = "ami-0ff8a91507f77f867"
+instance_type = "t2.micro"

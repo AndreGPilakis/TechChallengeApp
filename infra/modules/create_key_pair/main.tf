@@ -5,5 +5,5 @@ resource "aws_key_pair" "deployer" {
 }
 
 output "key_pair_name" {
-  value       = aws_key_pair.deployer.name
+  value       = aws_key_pair.deployer.key_name
 }

@@ -3,18 +3,25 @@ variable "ami_id"{
     type = string
 }
 
-variable "subnet_ids"{
-    type = list(string)
+variable "subnet_id"{
+    type = string
 }
 
 variable "key_pair_name"{
     type = string
 }
 
+variable "sg_id"{
+    type = string
+}
+
+variable "instance_type"{
+    type = string
+}
 resource "aws_instance" "web" {
   ami             = var.ami_id
-  instance_type   = "t2.micro"
-  subnet_id       = ""
+  instance_type   = var.instance_type
+  subnet_id       = var.subnet_id
   key_name        = var.key_pair_name
-  security_groups = ""
+  security_groups = [var.sg_id]
 }
