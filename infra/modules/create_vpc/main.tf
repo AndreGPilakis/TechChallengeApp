@@ -115,3 +115,15 @@ resource "aws_subnet" "data3" {
     Name = "data3"
   }
 }
+
+output "public_subnet_1_id" {
+  value = aws_subnet.public1.id
+}
+
+output "public_subnet_2_id" {
+  value = aws_subnet.public2.id
+}
+
+output "public_subnet_3_id" {
+  value = aws_subnet.public3.id
+}
