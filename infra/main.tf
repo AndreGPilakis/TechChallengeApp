@@ -12,7 +12,11 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
+
 module "create_vpc" {
   source = "./modules/create_vpc"
+}
 
+module "create_ec2" {
+  source = "./modules/create_vpc"
 }
