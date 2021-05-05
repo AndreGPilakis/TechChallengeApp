@@ -5,8 +5,11 @@ terraform {
       version = "~> 3.27"
     }
   }
-
   required_version = ">= 0.14.9"
+}
+
+variable "ami_id" {
+    type = string
 }
 
 provider "aws" {
