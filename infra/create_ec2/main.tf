@@ -3,8 +3,8 @@ variable "ami_id"{
     type = string
 }
 
-variable "subnet_id"{
-    type = string
+variable "subnet_ids"{
+    type = list(string)
 }
 
 variable "key_pair_name"{
