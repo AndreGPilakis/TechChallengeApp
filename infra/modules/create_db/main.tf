@@ -1,41 +1,52 @@
-resource "aws_db_subnet_group" "data_subnet_group" {
-  name       = "data_subnet_group"
-  subnet_ids = [aws_subnet.Cervian_data1.id, aws_subnet.Cervian_data2.id, aws_subnet.Cervian_data3.id]
 
-  tags = {
-    Name = "My DB subnet group"
-  }
+#TODO obfuscate password
+variable "storage_type"{
+  type = string
+}
+variable "engine"{
+  type = string
+}
+variable "engine_version"{
+  type = string
+}
+variable "instance_class"{
+  type = string
+}
+variable "name"{
+  type = string
+}
+variable "username"{
+  type = string
+}
+variable "password"{
+  type = string
+}
+variable "port" {
+    type = number
 }
 
+variable "db_subnet_group_name"{
+    type = string
+}
+
+variable "allow_https_ssh_id"{
+  type = string
+}
+
+variable "allow_postgres_id"{
+  type = string
+}
 resource "aws_db_instance" "data" {
   allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "postgres"
-  engine_version       = "9.6.16"
-  instance_class       = "db.t2.micro"
-  name                 = "app"
-  username             = "postgres"
-  password             = "mysupersecretpassword"
+  storage_type         = var.storage_type
+  engine               = var.engine
+  engine_version       = var.engine_version
+  instance_class       = var.instance_class
+  name                 = var.name
+  username             = var.username
+  password             = var.password
   skip_final_snapshot  = true
   port                 = 5432
-  db_subnet_group_name = aws_db_subnet_group.data_subnet_group.name
-  vpc_security_group_ids = [aws_security_group.allow_postgres.id, aws_security_group.allow_http_ssh.id]
-}
-
-
-resource "aws_security_group" "allow_postgres" {
-  name        = "allow_postgres"
-  description = "Allow ssh and http traffic"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    description = "postgres from app"
-    from_port   = 5432
-    to_port     = 5432
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  tags = {
-    Name = "Allow Postgres"
-  }
+  db_subnet_group_name = var.db_subnet_group_name
+  vpc_security_group_ids = [var.allow_postgres_id, var.allow_https_ssh_id]
 }

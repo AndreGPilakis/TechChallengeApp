@@ -16,6 +16,32 @@ variable "instance_type" {
     type = string
 }
 
+variable "storage_type"{
+  type = string
+}
+variable "engine"{
+  type = string
+}
+variable "engine_version"{
+  type = string
+}
+variable "instance_class"{
+  type = string
+}
+variable "name"{
+  type = string
+}
+variable "username"{
+  type = string
+}
+variable "password"{
+  type = string
+}
+
+variable "db_port" {
+    type = number
+}
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -50,4 +76,19 @@ module "create_lb" {
   public_subnet_2_id = module.create_vpc.public_subnet_2_id
   public_subnet_3_id = module.create_vpc.public_subnet_3_id
   ec2_id = module.create_ec2.ec2_id
+}
+
+module "create_db"{
+  source = "./modules/create_db"
+  storage_type         = var.storage_type
+  engine               = var.engine
+  engine_version       = var.engine_version
+  instance_class       = var.instance_class
+  name                 = var.name
+  username             = var.username
+  password             = var.password
+  port = var.db_port
+  allow_https_ssh_id = module.create_sg.sg_id
+  db_subnet_group_name = module.create_vpc.db_subnet_group_name
+  allow_postgres_id = module.create_sg.allow_postgres_id
 }

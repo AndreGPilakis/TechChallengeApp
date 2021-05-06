@@ -126,7 +126,7 @@ output "db_subnet_group_name"{
 }
 
 output "db_subnet_group_ids"{
-  value = aws_db_subnet_group.dat_subnet_group.subnet_ids
+  value = aws_db_subnet_group.data_subnet_group.subnet_ids
 }
 
 output "vpc_id" {
