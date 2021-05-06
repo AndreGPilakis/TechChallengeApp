@@ -52,8 +52,7 @@ resource "aws_security_group" "allow_http_ssh" {
 
 resource "aws_security_group" "allow_postgres" {
   name        = "allow_postgres"
-  description = "Allow ssh and http traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "postgres from app"
