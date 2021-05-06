@@ -1,0 +1,19 @@
+- name: Download and install tech test app
+  hosts: all
+  vars:
+    app_directory: "/etc/tech-challenge"
+    archived_application: "TechChallengeApp_v.0.8.0_linux64.zip" 
+  tasks:
+    # Creates directory for app with suitible permissions.
+    - name: Create app directory
+      become: yes
+      file:
+        path: "{{ app_directory }}"
+        state: directory
+        mode: '0755'
+    - name: Download and unzip file
+      become: yes
+      unarchive:
+        src: https://github.com/servian/TechChallengeApp/releases/download/v.0.8.0/TechTestApp_v.0.8.0_linux64.zip
+        dest: "{{ app_directory }}"
+        remote_src: yes
