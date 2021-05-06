@@ -41,3 +41,13 @@ module "create_ec2" {
   sg_id = module.create_sg.sg_id
   instance_type = var.instance_type
 }
+
+module "create_lb" {
+  source = "./modules/create_lb"
+  vpc_id = module.create_vpc.vpc_id
+  sg_id = module.create_sg.sg_id
+  public_subnet_1_id = module.create_vpc.public_subnet_1_id
+  public_subnet_2_id = module.create_vpc.public_subnet_2_id
+  public_subnet_3_id = module.create_vpc.public_subnet_3_id
+  ec2_id = module.create_ec2.ec2_id
+}

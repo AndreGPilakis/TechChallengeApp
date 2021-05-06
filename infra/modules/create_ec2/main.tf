@@ -25,3 +25,7 @@ resource "aws_instance" "web" {
   key_name        = var.key_pair_name
   security_groups = [var.sg_id]
 }
+
+output "ec2_id"{
+    value = aws_instance.web.id
+}
