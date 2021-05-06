@@ -116,6 +116,19 @@ resource "aws_subnet" "data3" {
   }
 }
 
+resource "aws_db_subnet_group" "data_subnet_group" {
+  name       = "data_subnet_group"
+  subnet_ids = [aws_subnet.data1.id, aws_subnet.data2.id, aws_subnet.data3.id]
+}
+
+output "db_subnet_group_name"{
+  value = aws_db_subnet_group.data_subnet_group.name
+}
+
+output "db_subnet_group_ids"{
+  value = aws_db_subnet_group.dat_subnet_group.subnet_ids
+}
+
 output "vpc_id" {
   value = aws_vpc.main.id
 }
