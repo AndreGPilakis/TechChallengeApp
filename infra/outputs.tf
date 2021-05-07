@@ -16,5 +16,5 @@ output "db_user" {
 
 output "db_password" {
   sensitive = true
-  value     = module.create_db.db_pass
+  value     = module.create_db.db_password
 }
