@@ -61,5 +61,5 @@ output "db_user"{
 
 output "db_password"{
   value = aws_db_instance.data.password
-  secure = true
+  sensitive = true
 }

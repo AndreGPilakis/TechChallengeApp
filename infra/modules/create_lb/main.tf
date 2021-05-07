@@ -22,7 +22,7 @@ variable "public_subnet_3_id" {
 }
 
 output "lb_endpoint"{
-  type = string
+  value = aws_lb.public_lb.endpoint
 }
 
 resource "aws_lb_target_group" "web" {
