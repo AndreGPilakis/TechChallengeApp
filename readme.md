@@ -42,3 +42,24 @@ To tear-down the infastructure that was created with ansible:
 - navigate back to the infra folder you ran `$ make up`
 - run `$ make down`
     - This will destroy all of the deployed terraform infastructure.
+
+## Architecture overview
+### VPC
+A VPC has been created and divided into 3 layers: Public for the load balancer, private for the ec2 instance, and data for the database. This has been done so that there is no direct connection from an end user to the ec2 instance or database.
+
+Each layer has been split into 3 availibility zones, this is to help with load balancing under large amounts or stress, or in the event one AWS region goes out.
+
+### Security group
+2 security groups have been created, 'allow_http_ssh' has been made to allow http and ssh to the ec2 instance, and 'allow_postgres' has been created to allow access to the database.
+
+### Key pair
+A key pair object is created for authentication to the ec2 instance, this looks in the directory `~/.ssh/id_rsa.pub` by default, this will need to be changed if your key is stored somewhere else.
+
+### EC2 instance
+An EC2 instance is created, this is what will be hosting the application and serving requests. It is running the latest suitible free linux distribution.
+
+### Load balancer
+A load balancer has been created to connect to the EC2 instance, it has a listener attatched to it to target the web VPC which will connect it to the EC2 instance. This is done so that no users have a direct connection to the EC2 instance
+
+### Database
+A postgress database is created in order to store the tasks created within the app.
