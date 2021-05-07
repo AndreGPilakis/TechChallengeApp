@@ -36,7 +36,7 @@ variable "allow_https_ssh_id"{
 variable "allow_postgres_id"{
   type = string
 }
-resource "aws_db_instance" "data" {
+resource "aws_db_instance" "data2" {
   allocated_storage    = 20
   storage_type         = var.storage_type
   engine               = var.engine
