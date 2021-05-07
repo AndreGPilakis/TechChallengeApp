@@ -36,12 +36,12 @@
     #Seeds the database on the server. Running this without -s will try to make a new db instance, no need as we made with TF
     - name: Seed database
       become: yes
-      command: ./TechTestApp updatedb -s
+      command: ./TechChallengeApp updatedb -s
       args:
         chdir: "{{ app_directory }}/dist"
     #begin serving requests
     - name: Start server
       become: yes
-      command: ./TechTestApp serve
+      command: ./TechChallengeApp serve
       args:
         chdir: "{{ app_directory }}/dist"
