@@ -21,6 +21,10 @@ variable "public_subnet_3_id" {
   type = string
 }
 
+output "lb_endpoint"{
+  type = string
+}
+
 resource "aws_lb_target_group" "web" {
   name     = "tech-challenge-targetgroup"
   port     = 80

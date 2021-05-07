@@ -17,3 +17,31 @@
         src: https://github.com/servian/TechChallengeApp/releases/download/v.0.8.0/TechChallengeApp_v.0.8.0_linux64.zip
         dest: "{{ app_directory }}"
         remote_src: yes
+    #Move config file to server from template.
+    #Listenhost, listenPort and db_port will not change between deployments and are therefore hardcoded
+    #db endpoint is trimmed as terraform out will give us the enpoint with the port on it, we don't want this in the conf file.
+    - name: Update config file
+      become: yes
+      vars:
+        db_user: "{{ db_user }}"
+        db_password: "{{ db_pass }}"
+        db_name: app
+        db_port: 5432
+        trimmed_db_endpoint: "{{db_endpoint | replace(':5432','')}}"
+        listen_host: "0.0.0.0"
+        listen_port: 80
+      template:
+        dest: "{{ app_directory }}/dist/conf.toml"
+        src: templates/config.toml.tpl
+    #Seeds the database on the server. Running this without -s will try to make a new db instance, no need as we made with TF
+    - name: Seed database
+      become: yes
+      command: ./TechTestApp updatedb -s
+      args:
+        chdir: "{{ app_directory }}/dist"
+    #begin serving requests
+    - name: Start server
+      become: yes
+      command: ./TechTestApp serve
+      args:
+        chdir: "{{ app_directory }}/dist"
