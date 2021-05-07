@@ -10,7 +10,9 @@ jobs:
 
     steps:
       - checkout
-
+      command : |
+        pwd
+        ls
       # build and test
       - run: go get -v -t -d ./...
       - run: go build -v
