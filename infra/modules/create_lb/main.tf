@@ -22,7 +22,7 @@ variable "public_subnet_3_id" {
 }
 
 output "lb_endpoint"{
-  value = aws_lb.public_lb.endpoint
+  value = aws_lb.public_lb.endpoint.dns_name
 }
 
 resource "aws_lb_target_group" "web" {

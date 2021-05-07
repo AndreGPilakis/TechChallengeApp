@@ -19,7 +19,6 @@ variable "instance_type"{
     type = string
 }
 resource "aws_instance" "web" {
-  name = "web"
   ami             = var.ami_id
   instance_type   = var.instance_type
   subnet_id       = var.subnet_id
