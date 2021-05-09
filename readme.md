@@ -26,7 +26,7 @@ To tear-down the infastructure that was created with ansible:
 - navigate back to the infra folder you ran `$ make up`
 - run `$ make down`
     - This will destroy all of the deployed terraform infastructure.
-<<<<<<< HEAD
+
 
 ## Architecture overview
 ### VPC
@@ -48,5 +48,4 @@ A load balancer has been created to connect to the EC2 instance, it has a listen
 
 ### Database
 A postgress database is created in order to store the tasks created within the app.
-=======
->>>>>>> 3de53a2f5569ec1bd984204e8a84e310e09462bb
+
