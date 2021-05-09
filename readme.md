@@ -1,21 +1,5 @@
 # Servian DevOps Tech Challenge - Tech Challenge App
 
-[![Build Status][circleci-badge]][circleci]
-[![Release][release-badge]][release]
-[![GoReportCard][report-badge]][report]
-[![License][license-badge]][license]
-
-TODO badges
-
-[circleci-badge]: https://circleci.com/gh/servian/TechChallengeApp.svg?style=shield&circle-token=8dfd03c6c2a5dc5555e2f1a84c36e33bc58ad0aa
-[circleci]: https://circleci.com/gh/servian/TechChallengeApp
-[release-badge]: http://img.shields.io/github/release/servian/TechChallengeApp/all.svg?style=flat
-[release]:https://github.com/Servian/TechChallengeApp/releases
-[report-badge]: https://goreportcard.com/badge/github.com/Servian/TechChallengeApp
-[report]: https://goreportcard.com/report/github.com/Servian/TechChallengeApp
-[license-badge]: https://img.shields.io/github/license/Servian/TechChallengeApp.svg?style=flat
-[license]: https://github.com/Servian/TechChallengeApp/license
-
 ## Overview
 This is Andre's rendition of the Servian Tech Challenge App. The project aims to fully automate the deployment of this application in a manner that meets the criteria specified on the [Assestment page](https://github.com/AndreGPilakis/TechChallengeApp/blob/master/ASSESSMENT.md). This page will detail how I aimed to address all of the assessment criteria.
 
@@ -42,6 +26,7 @@ To tear-down the infastructure that was created with ansible:
 - navigate back to the infra folder you ran `$ make up`
 - run `$ make down`
     - This will destroy all of the deployed terraform infastructure.
+<<<<<<< HEAD
 
 ## Architecture overview
 ### VPC
@@ -63,3 +48,5 @@ A load balancer has been created to connect to the EC2 instance, it has a listen
 
 ### Database
 A postgress database is created in order to store the tasks created within the app.
+=======
+>>>>>>> 3de53a2f5569ec1bd984204e8a84e310e09462bb
