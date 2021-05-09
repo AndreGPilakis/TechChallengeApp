@@ -1,4 +1,4 @@
-variable "vpc_id"{
+variable "vpc_id" {
   type = string
 }
 
@@ -51,8 +51,8 @@ resource "aws_security_group" "allow_http_ssh" {
 }
 
 resource "aws_security_group" "allow_postgres" {
-  name        = "allow_postgres"
-  vpc_id      = var.vpc_id
+  name   = "allow_postgres"
+  vpc_id = var.vpc_id
 
   ingress {
     description = "postgres from app"
@@ -63,10 +63,10 @@ resource "aws_security_group" "allow_postgres" {
   }
 }
 
-output "sg_id"{
-    value = aws_security_group.allow_http_ssh.id
+output "sg_id" {
+  value = aws_security_group.allow_http_ssh.id
 }
 
-output "allow_postgres_id"{
+output "allow_postgres_id" {
   value = aws_security_group.allow_postgres.id
 }

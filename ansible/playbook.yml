@@ -33,15 +33,24 @@
       template:
         dest: "{{ app_directory }}/dist/conf.toml"
         src: templates/config.toml.tpl
-    #Seeds the database on the server. Running this without -s will try to make a new db instance, no need as we made with TF
+
+     #Transfer service template to Server
+     #This ensures the server will serve whenever an ec2 instance is booted.
+    - name: Transfer Server start template
+      become: yes
+      template:
+        dest: /usr/lib/systemd/system/startServer.service
+        src: templates/startServer.service.tpl
+    #start the service
+    - name: Ensure service is enabled
+      become: yes
+      service:
+        name: startServer.service
+        state: started
+        enabled: yes
+        #Seeds the database on the server. Running this without -s will try to make a new db instance, no need as we made with TF
     - name: Seed database
       become: yes
       command: ./TechChallengeApp updatedb -s
-      args:
-        chdir: "{{ app_directory }}/dist"
-    #begin serving requests
-    - name: Start server
-      become: yes
-      command: ./TechChallengeApp serve
       args:
         chdir: "{{ app_directory }}/dist"

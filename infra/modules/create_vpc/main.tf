@@ -121,11 +121,11 @@ resource "aws_db_subnet_group" "data_subnet_group" {
   subnet_ids = [aws_subnet.data1.id, aws_subnet.data2.id, aws_subnet.data3.id]
 }
 
-output "db_subnet_group_name"{
+output "db_subnet_group_name" {
   value = aws_db_subnet_group.data_subnet_group.name
 }
 
-output "db_subnet_group_ids"{
+output "db_subnet_group_ids" {
   value = aws_db_subnet_group.data_subnet_group.subnet_ids
 }
 
