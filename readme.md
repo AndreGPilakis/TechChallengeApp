@@ -18,7 +18,7 @@ To Deploy this application:
 - Unzip the project to your desired directory
 - cd to the the extracted directory and navigate to the 'infra' folder
 - run `$ make up`
-    - This will initialise, plan and apply via terraform and then run our ansible playbook to deploy the server and seed the database.
+    - This will initialise, plan and apply via terraform and then run our ansible playbook to deploy the server and seed the database. You will need to cancel the asible job in order for the app to stop serving.
 - To view the application, navigate to the IP address output from the ansible script on port 80 in a web browser. Alternatively, you may enter the load balancer endpoint given from `terraform output`.
 
 ## Cleanup
