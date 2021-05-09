@@ -63,7 +63,6 @@ resource "aws_security_group" "allow_postgres" {
   }
 }
 
-#TODO refractor name
 output "sg_id"{
     value = aws_security_group.allow_http_ssh.id
 }

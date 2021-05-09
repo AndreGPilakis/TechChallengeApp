@@ -33,7 +33,7 @@ Candidates should take care to ensure that their submission meets the following 
 - Network segmentation (if applicable to the implementation)
     - App has been deployed onto a VPC with 3 layers, Public, Private and data. This allowed the LB, EC2 Instance and DB to function on different subnets.
 - Secret storage
-    TODO
+    - Some secrets have been left on in plaintext just due to the nature of this tech test app. They have been secured where possible, however it is impossible to have secure input when dealing with only local files. (see comments in create_db module.)
 - Platform security features
     - I wasn't too sure what was meant by this, however security features include a key pair being generated in order to access the EC2 instance, and the postgress database is secured via a password.
 

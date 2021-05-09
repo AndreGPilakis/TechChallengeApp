@@ -1,5 +1,4 @@
 
-#TODO obfuscate password
 variable "storage_type"{
   type = string
 }
@@ -20,6 +19,7 @@ variable "username"{
 }
 variable "password"{
   type = string
+  sensitive = true
 }
 variable "port" {
     type = number
