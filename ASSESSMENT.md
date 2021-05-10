@@ -27,13 +27,13 @@ Candidates should take care to ensure that their submission meets the following 
 - Comments where relevant
     - Comments where anything is confusing.
 - Consistency of Coding
-    - Same naming conentions have been followed throughout project.
+    - Same naming conventions have been followed throughout project.
 
 #### Security
 - Network segmentation (if applicable to the implementation)
     - App has been deployed onto a VPC with 3 layers, Public, Private and data. This allowed the LB, EC2 Instance and DB to function on different subnets.
 - Secret storage
-    - Some secrets have been left on in plaintext just due to the nature of this tech test app. They have been secured where possible, however it is impossible to have secure input when dealing with only local files. (see comments in create_db module.)
+    - Some secrets have been left on in plaintext just due to the nature of this tech test app. They have been secured where possible, however it is impossible to have secure input when dealing with only local files. (see comments in create_db module.) In a real world scenario, I would store any passwords/sensitive values in a key vault or other KMS system and retrieve them.
 - Platform security features
     - I wasn't too sure what was meant by this, however security features include a key pair being generated in order to access the EC2 instance, and the postgress database is secured via a password.
 
